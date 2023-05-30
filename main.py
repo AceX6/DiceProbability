@@ -1,16 +1,70 @@
-# This is a sample Python script.
+import sys
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QComboBox,
+    QDateEdit,
+    QDateTimeEdit,
+    QDial,
+    QDoubleSpinBox,
+    QFontComboBox,
+    QLabel,
+    QLCDNumber,
+    QLineEdit,
+    QMainWindow,
+    QProgressBar,
+    QPushButton,
+    QRadioButton,
+    QSlider,
+    QSpinBox,
+    QTimeEdit,
+    QVBoxLayout,
+    QWidget,
+)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Subclass QMainWindow to customize your application's main window
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Widgets App")
+
+        layout = QVBoxLayout()
+        widgets = [
+            QCheckBox,
+            QComboBox,
+            QDateEdit,
+            QDateTimeEdit,
+            QDial,
+            QDoubleSpinBox,
+            QFontComboBox,
+            QLCDNumber,
+            QLabel,
+            QLineEdit,
+            QProgressBar,
+            QPushButton,
+            QRadioButton,
+            QSlider,
+            QSpinBox,
+            QTimeEdit,
+        ]
+
+        for w in widgets:
+            layout.addWidget(w())
+
+        widget = QWidget()
+        widget.setLayout(layout)
+
+        # Set the central widget of the Window. Widget will expand
+        # to take up all the space in the window by default.
+        self.setCentralWidget(widget)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+app.exec()
